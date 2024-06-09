@@ -1,4 +1,5 @@
-import { Box, Container, VStack, Heading, Text, SimpleGrid, Image, Button } from "@chakra-ui/react";
+import { Box, Container, VStack, Heading, Text, SimpleGrid, Image, Button, Flex, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 const products = [
   {
@@ -28,8 +29,16 @@ const Index = () => {
   return (
     <Container maxW="container.xl" py={10}>
       <VStack spacing={8}>
-        <Heading as="h1" size="2xl">Welcome to Electronics Store</Heading>
-        <Text fontSize="xl">Find the best electronics at unbeatable prices</Text>
+        <Flex as="nav" width="100%" justifyContent="space-between" mb={8}>
+          <Link as={RouterLink} to="/">Home</Link>
+          <Link as={RouterLink} to="/products">Products</Link>
+          <Link as={RouterLink} to="/about">About Us</Link>
+          <Link as={RouterLink} to="/contact">Contact Us</Link>
+        </Flex>
+        <Box as="section" textAlign="center" mb={10}>
+          <Heading as="h1" size="2xl">Welcome to Electronics Store</Heading>
+          <Text fontSize="xl">Find the best electronics at unbeatable prices</Text>
+        </Box>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           {products.map(product => (
             <Box key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
@@ -43,6 +52,16 @@ const Index = () => {
             </Box>
           ))}
         </SimpleGrid>
+        <Box as="footer" width="100%" textAlign="center" mt={10} py={5} borderTopWidth="1px">
+          <Text>&copy; {new Date().getFullYear()} Electronics Store. All rights reserved.</Text>
+          <Flex justifyContent="center" mt={2}>
+            <Link mx={2} href="#">Terms of Service</Link>
+            <Link mx={2} href="#">Privacy Policy</Link>
+            <Link mx={2} href="#">Facebook</Link>
+            <Link mx={2} href="#">Twitter</Link>
+            <Link mx={2} href="#">Instagram</Link>
+          </Flex>
+        </Box>
       </VStack>
     </Container>
   );
